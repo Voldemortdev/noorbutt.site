@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor Butt — Web Developer & Video Editor</title>
+  <meta name="description" content="Official portal for Noor Butt: High-performance Shopify & web development, and compelling visual post-production." />
+  <meta name="author" content="Noor Butt" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://noorbutt.site" />
+  <meta property="og:title" content="Noor Butt — Web Developer & Video Editor" />
+  <meta property="og:description" content="Building high-performance e-commerce & web interfaces, and crafting compelling visual post-production. Choose a portal to explore my work." />
+  <meta property="og:image" content="https://noorbutt.site/favicon.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Noor Butt — Web Developer & Video Editor" />
+  <meta name="twitter:description" content="High-performance Shopify & web development, and compelling visual post-production." />
+  <meta name="twitter:image" content="https://noorbutt.site/favicon.svg" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Subtle cursor spotlight effect on cards */
+    .spotlight-card {
+      position: relative;
+    }
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(255, 255, 255, 0.16),
+        transparent 65%
+      );
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col justify-between selection:bg-neutral-800 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Glow Background -->
+  <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+    <div class="h-[520px] w-[640px] bg-gradient-to-tr from-emerald-950/25 via-sky-950/20 to-purple-950/30 blur-[130px] rounded-full"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 group">
+      <span class="text-sm font-semibold tracking-wider uppercase text-neutral-400 group-hover:text-white transition-colors">
+        noorbutt<span class="text-neutral-600">.site</span>
+      </span>
+    </a>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Live Availability Indicator -->
+
+      <!-- Quick Contact CTA -->
+      <button 
+        onclick="openContactModal()" 
+        class="text-xs px-3.5 py-1.5 rounded-lg bg-neutral-900/80 border border-neutral-800 hover:border-neutral-700 hover:text-white text-neutral-300 font-medium transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-1 focus:ring-neutral-700 cursor-pointer">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>Get in Touch</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-5xl mx-auto px-6 py-10 my-auto">
+    
+    <!-- Hero / Intro -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+        Noor Butt
+      </h1>
+      <p class="text-neutral-400 text-base md:text-lg leading-relaxed mb-6">
+        Building high-performance e-commerce & web interfaces, and crafting compelling visual post-production. Choose a portal to explore my work.
+      </p>
+
+      <!-- Trust Badges Strip -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-2 px-4 rounded-full bg-neutral-900/40 border border-neutral-800/60 text-xs text-neutral-400">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Web Development</span>
+        </div>
+        <div class="w-1 h-1 rounded-full bg-neutral-700 hidden sm:block"></div>
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="play-circle" class="w-3.5 h-3.5 text-sky-400"></i>
+          <span>Short-Form & Commercials</span>
+        </div>
+        <div class="w-1 h-1 rounded-full bg-neutral-700 hidden sm:block"></div>
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-purple-400"></i>
+          <span>End-to-End Creative</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dual Gateway Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      
+      <!-- Developer Gateway -->
+      <a href="https://dev.noorbutt.site" 
+         class="spotlight-card group relative flex flex-col justify-between p-8 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/50">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="h-11 w-11 rounded-xl bg-neutral-800/80 flex items-center justify-center text-neutral-300 group-hover:text-emerald-400 transition-colors">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <div class="flex items-center gap-1 text-xs text-neutral-500 group-hover:text-neutral-300 transition-colors">
+              <span>dev.noorbutt.site</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            </div>
+          </div>
+          
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+            Web Development
+          </h2>
+          <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+            Shopify Liquid, modern frontend web apps, interactive storefronts, headless architectures, and custom workflows.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-4 border-t border-neutral-800/70">
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">Shopify</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">WordPress</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">HTML</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">CSS</span>
+        </div>
+      </a>
+
+      <!-- Video Editing Gateway -->
+      <a href="https://edit.noorbutt.site" 
+         class="spotlight-card group relative flex flex-col justify-between p-8 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/50">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div class="h-11 w-11 rounded-xl bg-neutral-800/80 flex items-center justify-center text-neutral-300 group-hover:text-sky-400 transition-colors">
+              <i data-lucide="film" class="w-5 h-5"></i>
+            </div>
+            <div class="flex items-center gap-1 text-xs text-neutral-500 group-hover:text-neutral-300 transition-colors">
+              <span>edit.noorbutt.site</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-500 group-hover:text-sky-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+            </div>
+          </div>
+          
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+            Video & Post-Production
+          </h2>
+          <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+            Commercial cuts, high-retention social reels, narrative pacing, color grading, sound design, and finishing for creators and brands.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-4 border-t border-neutral-800/70">
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">Premiere Pro</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">Shorts / Reels</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">Color Grading</span>
+          <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400 group-hover:text-neutral-300 group-hover:bg-neutral-800 transition-colors">Sound Design</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Client Demo Quick-Access Box -->
+    <div class="max-w-xl mx-auto rounded-xl p-6 bg-neutral-900/40 border border-neutral-800/80 text-center">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-neutral-800/60 text-[11px] uppercase tracking-wider text-neutral-400 font-semibold mb-2">
+        <i data-lucide="lock" class="w-3 h-3 text-neutral-400"></i>
+        Private Client Preview
+      </div>
+      <p class="text-xs text-neutral-400 mb-4">Enter your provided pitch slug or brand code below to open your bespoke preview.</p>
+      
+      <form id="demo-form" class="flex flex-col sm:flex-row items-center gap-2 max-w-sm mx-auto">
+        <div class="relative w-full flex-1">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xs select-none">/</span>
+          <input 
+            type="text" 
+            id="demo-slug" 
+            placeholder="e.g. brand-name" 
+            class="w-full pl-6 pr-3 py-2 bg-neutral-950/80 border border-neutral-800 rounded-lg text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors"
+            required
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+        <button 
+          type="submit" 
+          class="w-full sm:w-auto px-4 py-2 bg-neutral-100 hover:bg-white text-neutral-950 font-medium rounded-lg text-xs transition-colors flex items-center justify-center gap-1">
+          Open <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </form>
+      <p class="text-[11px] text-neutral-600 mt-3">Need access or misplaced your preview link? <button onclick="openContactModal()" class="text-neutral-400 hover:text-white underline underline-offset-2 transition-colors cursor-pointer">Reach out directly</button>.</p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 border-t border-neutral-900">
+    <p>© <span id="year"></span> Noor Butt. All rights reserved.</p>
+    
+    <div class="flex items-center gap-5">
+      <button onclick="openContactModal()" class="hover:text-neutral-300 transition-colors flex items-center gap-1 cursor-pointer">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>contact@noorbutt.site</span>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Contact Modal Dialog -->
+  <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-200">
+    <div id="contact-card" class="relative w-full max-w-lg bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-7 shadow-2xl shadow-black/80 transform scale-95 transition-all duration-200 text-left">
+      
+      <!-- Close Button -->
+      <button onclick="closeContactModal()" class="absolute top-5 right-5 p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer" aria-label="Close dialog">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-5">
+        <h3 class="text-xl font-bold text-white tracking-tight">Let's work together</h3>
+        <p class="text-xs text-neutral-400 mt-1">Have an upcoming build or editing project? Choose the easiest way to connect.</p>
+      </div>
+
+      <!-- Quick Action Buttons (Copy Email / Open Mail App) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
+        <button onclick="copyEmail()" class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-200 hover:text-white transition-all group cursor-pointer">
+          <i data-lucide="copy" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-emerald-400 transition-colors"></i>
+          <span>Copy Email Address</span>
+        </button>
+        <a href="mailto:contact@noorbutt.site?subject=Project%20Inquiry%20%E2%80%94%20Noor%20Butt" class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-200 hover:text-white transition-all group">
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-sky-400 transition-colors"></i>
+          <span>Open in Mail App</span>
+        </a>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-5">
+        <div class="border-t border-neutral-800 w-full"></div>
+        <span class="bg-neutral-900 px-3 text-[10px] uppercase tracking-wider text-neutral-500 font-semibold absolute">Or send a quick message</span>
+      </div>
+
+      <!-- Direct Message Form -->
+      <form id="contact-form" class="space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="contact-name" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Your Name</label>
+            <input type="text" id="contact-name" required placeholder="Jane Doe" class="w-full px-3 py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+          </div>
+          <div>
+            <label for="contact-email" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Your Email</label>
+            <input type="email" id="contact-email" required placeholder="jane@company.com" class="w-full px-3 py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+          </div>
+        </div>
+
+        <div>
+          <label for="contact-service" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Area of Interest</label>
+          <select id="contact-service" class="w-full px-3 py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-xs text-white focus:outline-none focus:border-neutral-600 transition-colors">
+            <option value="Web & Shopify Development">Web & Shopify Development</option>
+            <option value="Video Editing & Post-Production">Video Editing & Post-Production</option>
+            <option value="Both / Full-Stack Project">Both / Full-Stack Project</option>
+            <option value="Other Consultation">Other Consultation</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="contact-message" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Message</label>
+          <textarea id="contact-message" rows="3" required placeholder="Tell me about your project scope, timeline, or idea..." class="w-full px-3 py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 px-4 bg-white hover:bg-neutral-200 text-neutral-950 font-semibold rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Send Inquiry</span>
+        </button>
+      </form>
+
+      <!-- Form Success Notification State (Hidden by default) -->
+      <div id="contact-success" class="hidden text-center py-6">
+        <div class="w-10 h-10 rounded-full bg-emerald-950 border border-emerald-800/60 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+          <i data-lucide="check" class="w-5 h-5"></i>
+        </div>
+        <h4 class="text-base font-semibold text-white mb-1">Message Sent!</h4>
+        <p class="text-xs text-neutral-400 max-w-xs mx-auto mb-4" id="success-desc">
+          Thank you! Your message has been sent directly to my inbox. I typically respond within 24 hours.
+        </p>
+        <button onclick="resetContactForm()" class="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-medium rounded-lg transition-colors cursor-pointer">
+          Send another message
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-neutral-200 shadow-xl shadow-black/50">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Spotlight cursor movement tracker
+    document.querySelectorAll('.spotlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Contact Modal Dialog Controls
+    const modal = document.getElementById('contact-modal');
+    const card = document.getElementById('contact-card');
+
+    function openContactModal() {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeContactModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      card.classList.add('scale-95');
+      card.classList.remove('scale-100');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close when clicking outside modal card
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeContactModal();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
+        closeContactModal();
+      }
+    });
+
+    // Copy Email to Clipboard with Toast
+    function copyEmail() {
+      const email = 'contact@noorbutt.site';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('Copied ' + email + ' to clipboard!');
+      }).catch(() => {
+        window.location.href = 'mailto:' + email;
+      });
+    }
+
+    // Toast display helper
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      
+      toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3000);
+    }
+
+    // Handle Contact Form Submission with Web3Forms
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const submitText = submitBtn.querySelector('span');
+      const originalText = submitText.textContent;
+      
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      submitText.textContent = 'Sending...';
+
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const service = document.getElementById('contact-service').value;
+      const message = document.getElementById('contact-message').value.trim();
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: '589b344f-48f5-4403-936e-439ad4e96cc3',
+            name: name,
+            email: email,
+            subject: `[Project Inquiry] ${service} — ${name}`,
+            service: service,
+            message: message,
+            from_name: 'noorbutt.site Gateway'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById('contact-form').classList.add('hidden');
+          document.getElementById('contact-success').classList.remove('hidden');
+          lucide.createIcons();
+        } else {
+          showToast(data.message || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        showToast('Unable to send. Please reach out to contact@noorbutt.site');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        submitText.textContent = originalText;
+      }
+    });
+
+    function resetContactForm() {
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-form').classList.remove('hidden');
+      document.getElementById('contact-success').classList.add('hidden');
+    }
+
+    // Client Demo Slug Redirection Logic
+    document.getElementById('demo-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const slugInput = document.getElementById('demo-slug');
+      const rawSlug = slugInput.value.trim().toLowerCase();
+      const slug = rawSlug.replace(/^\/+/, '');
+      
+      if (slug) {
+        showToast('Opening ' + slug + '.noorbutt.site...');
+        setTimeout(() => {
+          window.location.href = `https://${slug}.noorbutt.site`;
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>
