@@ -1,0 +1,739 @@
+  <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Noor Butt — Web Developer | Custom Websites, WordPress & Shopify</title>
+  <meta name="description" content="I build fast, modern websites for businesses and brands, including custom HTML/CSS sites, WordPress websites and Shopify stores. Mobile-first, SEO-ready and built to convert." />
+  <meta name="author" content="Noor Butt" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dev.noorbutt.site" />
+  <meta property="og:title" content="Noor Butt — Web Developer | Custom Websites, WordPress & Shopify" />
+  <meta property="og:description" content="I build fast, modern websites for businesses and brands, including custom HTML/CSS sites, WordPress websites and Shopify stores. Mobile-first, SEO-ready and built to convert." />
+  <meta property="og:image" content="https://dev.noorbutt.site/favicon.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Noor Butt — Web Developer | Custom Websites, WordPress & Shopify" />
+  <meta name="twitter:description" content="I build fast, modern websites for businesses and brands, including custom HTML/CSS sites, WordPress websites and Shopify stores. Mobile-first, SEO-ready and built to convert." />
+
+  <!-- Tailwind CSS CDN & Custom Breakpoints -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '400px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Subtle cursor spotlight effect on cards matching noorbutt.site */
+    .spotlight-card {
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .spotlight-card::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: radial-gradient(
+          450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+          rgba(255, 255, 255, 0.16),
+          transparent 65%
+        );
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen min-h-[100dvh] flex flex-col justify-between selection:bg-neutral-800 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Glow Background (Clipped on mobile to avoid overflow) -->
+  <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center overflow-hidden">
+    <div class="w-[300px] xs:w-[420px] sm:w-[640px] h-[300px] xs:h-[420px] sm:h-[520px] bg-gradient-to-tr from-sky-950/30 via-indigo-950/20 to-purple-950/30 blur-[80px] sm:blur-[130px] rounded-full"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-8 flex items-center justify-between relative">
+    
+    <!-- Brand / Backlink to Hub -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="https://noorbutt.site" class="text-xs font-semibold tracking-wider uppercase text-neutral-500 hover:text-white transition-colors flex items-center gap-1 sm:gap-1.5" title="Back to Central Portal">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span>Hub</span>
+      </a>
+      <span class="text-neutral-700">/</span>
+      <a href="#" class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-neutral-400 hover:text-white transition-colors">
+        dev<span class="text-neutral-600">.noorbutt.site</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation (Centered) -->
+    <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-400 md:absolute md:left-1/2 md:-translate-x-1/2">
+      <a href="#about" class="hover:text-white transition-colors">About</a>
+      <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+      <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+      <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- CTA -->
+      <a href="#contact" class="text-xs px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 rounded-lg bg-neutral-900/80 border border-neutral-800 hover:border-neutral-700 hover:text-white text-neutral-300 font-medium transition-all flex items-center gap-1.5 focus:outline-none focus:ring-1 focus:ring-neutral-700 cursor-pointer whitespace-nowrap active:scale-95">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>Start a Project</span>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-toggle" class="md:hidden p-1.5 sm:p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-900 transition-colors cursor-pointer active:scale-95" aria-label="Toggle navigation">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-b border-neutral-900 bg-neutral-950/95 backdrop-blur-md px-4 sm:px-6 py-4 space-y-3 text-xs max-w-5xl mx-auto w-full text-center transition-all duration-200">
+    <a href="#about" class="block text-neutral-400 hover:text-white py-1.5 transition-colors">About</a>
+    <a href="#projects" class="block text-neutral-400 hover:text-white py-1.5 transition-colors">Projects</a>
+    <a href="#experience" class="block text-neutral-400 hover:text-white py-1.5 transition-colors">Experience</a>
+    <a href="#skills" class="block text-neutral-400 hover:text-white py-1.5 transition-colors">Skills</a>
+    <a href="#contact" class="block text-sky-400 font-medium py-1.5 hover:text-sky-300 transition-colors">Contact / Get in Touch →</a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-16 sm:space-y-24">
+
+    <!-- HERO / ABOUT SECTION -->
+    <section id="about" class="pt-2 sm:pt-8 text-center max-w-2xl mx-auto">
+      
+      <h1 class="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-white mb-2">
+        Noor Butt
+      </h1>
+      <p class="text-xs sm:text-sm uppercase tracking-wider text-neutral-400 font-semibold mb-4 sm:mb-5">
+        Web Developer · WordPress & Shopify
+      </p>
+
+      <p class="text-neutral-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 px-1 sm:px-0">
+        I build fast, modern websites that help businesses look professional and win more customers. That includes custom-coded sites, WordPress websites and Shopify stores, each one mobile-first, easy to manage and built to perform.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-2.5 sm:gap-3 mb-8 sm:mb-12 max-w-xs xs:max-w-none mx-auto">
+        <a href="#projects" class="w-full xs:w-auto px-4 py-2.5 sm:py-2 bg-neutral-100 hover:bg-white text-neutral-950 font-medium rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-lg shadow-white/5">
+          <span>View My Work</span>
+          <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+        </a>
+       
+        <button onclick="copyEmail()" class="w-full xs:w-auto px-3.5 py-2.5 sm:py-2 bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700 text-neutral-400 hover:text-neutral-200 text-xs rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95" title="Click to copy email address">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span class="truncate">contact@noorbutt.site</span>
+        </button>
+      </div>
+
+      <!-- Trust Stats Bar -->
+      <div class="grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 p-3 xs:p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-neutral-900/40 border border-neutral-800/80 text-center">
+        <div class="px-0.5 sm:px-1">
+          <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-white mb-0.5 leading-none sm:leading-tight">4+ Years</div>
+          <div class="text-[9px] xs:text-[10px] sm:text-[11px] text-neutral-500 uppercase tracking-tight xs:tracking-wider mt-1">Experience</div>
+        </div>
+        <div class="px-0.5 sm:px-1">
+          <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-sky-400 mb-0.5 leading-none sm:leading-tight">20+</div>
+          <div class="text-[9px] xs:text-[10px] sm:text-[11px] text-neutral-500 uppercase tracking-tight xs:tracking-wider mt-1">Websites Built</div>
+        </div>
+        <div class="px-0.5 sm:px-1">
+          <div class="text-xl xs:text-2xl sm:text-3xl font-bold text-sky-400 mb-0.5 leading-none sm:leading-tight">12+</div>
+          <div class="text-[9px] xs:text-[10px] sm:text-[11px] text-neutral-500 uppercase tracking-tight xs:tracking-wider mt-1">Happy Clients</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="scroll-mt-24">
+      <div class="mb-8">
+        <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold mb-1">Portfolio</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Selected Work</h2>
+        <p class="text-xs text-neutral-400 mt-1">Websites and online stores built to look great, load fast and grow the business.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+
+        <!-- Project 01 (Featured) -->
+        <div class="spotlight-card group relative flex flex-col justify-between p-5 sm:p-6 lg:p-7 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/50">
+          <div>
+            <div class="flex items-center justify-between mb-4 sm:mb-5">
+              
+              <span class="text-xs text-neutral-500 font-medium">Shopify · E-Commerce</span>
+            </div>
+
+            <h3 class="text-base sm:text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+              Belli Skincare
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed mb-6">
+              A premium skincare store built to earn trust. Ingredient-based filtering and a pregnancy-safe shopping path help customers find the right products faster.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mb-4">
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">Shopify</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">Liquid</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">UI/UX</span>
+            </div>
+
+            <a href="https://www.belliskincare.com/" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-400 hover:text-white flex items-center justify-between group-hover:text-sky-400 transition-colors pt-1 font-medium">
+              <span class="truncate">belliskincare.com</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="spotlight-card group relative flex flex-col justify-between p-5 sm:p-6 lg:p-7 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/50">
+          <div>
+            <div class="flex items-center justify-between mb-4 sm:mb-5">
+             
+              <span class="text-xs text-neutral-500 font-medium">Shopify · E-Commerce</span>
+            </div>
+
+            <h3 class="text-base sm:text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+              Vasanti Cosmetics
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed mb-6">
+              A high-converting online store for a global beauty brand. A routine builder and concern-based collections guide shoppers straight to checkout.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mb-4">
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">Shopify Liquid</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">JavaScript</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">UI/UX</span>
+            </div>
+
+            <a href="https://vasanticosmetics.com" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-400 hover:text-white flex items-center justify-between group-hover:text-sky-400 transition-colors pt-1 font-medium">
+              <span class="truncate">vasanticosmetics.com</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 03 -->
+        <div class="spotlight-card group relative flex flex-col justify-between p-5 sm:p-6 lg:p-7 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-neutral-900/50">
+          <div>
+            <div class="flex items-center justify-between mb-4 sm:mb-5">
+    
+              <span class="text-xs text-neutral-500 font-medium">Shopify · CRO</span>
+            </div>
+
+            <h3 class="text-base sm:text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+              Threadly Wear
+            </h3>
+            <p class="text-neutral-400 text-xs leading-relaxed mb-6">
+              A mobile-first apparel store built for fast growth. Streamlined product pages and quick navigation help turn traffic into orders.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mb-4">
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">Liquid</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">CSS Modules</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-neutral-800/50 text-neutral-400">Tailwind</span>
+            </div>
+
+            <a href="https://threadlywear.com" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-400 hover:text-white flex items-center justify-between group-hover:text-sky-400 transition-colors pt-1 font-medium">
+              <span class="truncate">threadlywear.com</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 shrink-0 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="scroll-mt-24">
+      <div class="mb-8">
+        <p class="text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-1">Clients</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Who I've Worked With</h2>
+        <p class="text-xs text-neutral-400 mt-1">Businesses and brands across the US, UK, Canada and Pakistan.</p>
+      </div>
+
+      <div class="divide-y divide-neutral-900 rounded-xl sm:rounded-2xl bg-neutral-900/40 border border-neutral-800/80 overflow-hidden">
+        
+        <!-- Client 1 -->
+        <div class="p-4 sm:p-6 flex items-start sm:items-center justify-between gap-3 sm:gap-4 hover:bg-neutral-900/60 transition-colors">
+          <div class="pr-2">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+              <span class="text-xs sm:text-sm font-semibold text-white">Vasanti Cosmetics</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 text-neutral-400">Canada</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Custom store sections, a routine builder and concern-based collections.
+            </p>
+          </div>
+          <span class="text-xs text-neutral-500 shrink-0 font-mono pt-0.5 sm:pt-0">01</span>
+        </div>
+
+        <!-- Client 2 -->
+        <div class="p-4 sm:p-6 flex items-start sm:items-center justify-between gap-3 sm:gap-4 hover:bg-neutral-900/60 transition-colors">
+          <div class="pr-2">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+              <span class="text-xs sm:text-sm font-semibold text-white">Belli Skincare</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 text-neutral-400">USA</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Ingredient filtering and pregnancy-safe navigation for a trusted skincare brand.
+            </p>
+          </div>
+          <span class="text-xs text-neutral-500 shrink-0 font-mono pt-0.5 sm:pt-0">02</span>
+        </div>
+
+        <!-- Client 3 -->
+        <div class="p-4 sm:p-6 flex items-start sm:items-center justify-between gap-3 sm:gap-4 hover:bg-neutral-900/60 transition-colors">
+          <div class="pr-2">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+              <span class="text-xs sm:text-sm font-semibold text-white">Nomads Clothing</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 text-neutral-400">UK</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Flexible, reusable page sections for a sustainable fashion brand's storytelling.
+            </p>
+          </div>
+          <span class="text-xs text-neutral-500 shrink-0 font-mono pt-0.5 sm:pt-0">03</span>
+        </div>
+
+        <!-- Client 4 -->
+        <div class="p-4 sm:p-6 flex items-start sm:items-center justify-between gap-3 sm:gap-4 hover:bg-neutral-900/60 transition-colors">
+          <div class="pr-2">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+              <span class="text-xs sm:text-sm font-semibold text-white">Threadly Wear</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 text-neutral-400">Global</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Conversion and mobile speed improvements for a fast-growing apparel store.
+            </p>
+          </div>
+          <span class="text-xs text-neutral-500 shrink-0 font-mono pt-0.5 sm:pt-0">04</span>
+        </div>
+
+        <!-- Client 5 -->
+        <div class="p-4 sm:p-6 flex items-start sm:items-center justify-between gap-3 sm:gap-4 hover:bg-neutral-900/60 transition-colors">
+          <div class="pr-2">
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+              <span class="text-xs sm:text-sm font-semibold text-white">Khuwaab by Kazma</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-neutral-800/80 text-neutral-400">Pakistan</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              A full online store build with a premium, luxury feel.
+            </p>
+          </div>
+          <span class="text-xs text-neutral-500 shrink-0 font-mono pt-0.5 sm:pt-0">05</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS / EXPERTISE -->
+    <section id="skills" class="scroll-mt-24">
+      <div class="mb-8">
+        <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold mb-1">Services</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">What I Can Build for You</h2>
+        <p class="text-xs text-neutral-400 mt-1">From simple business websites to full online stores.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        
+        <!-- Skill 01 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• Development</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">Custom Websites</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Hand-coded, lightweight websites with a unique design. No heavy templates, so they load fast and are fully tailored to your brand.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">HTML/CSS</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Skill 02 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• CMS</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">WordPress Websites</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Professional WordPress sites you can easily update yourself: business sites, blogs and portfolios, set up with the right plugins and clean SEO.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">WordPress</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Custom Themes</span>
+          </div>
+        </div>
+
+        <!-- Skill 03 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• E-Commerce</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">Shopify Stores</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Custom Shopify themes and store setup for brands ready to sell online, with sections you can edit without a developer.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Shopify</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Liquid</span>
+          </div>
+        </div>
+
+        <!-- Skill 04 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• Growth</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">Speed & Conversion</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Faster pages, clearer layouts and stronger calls to action, so more visitors become customers.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Speed Optimization</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">CRO</span>
+          </div>
+        </div>
+
+        <!-- Skill 05 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• Design</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">Mobile-First & SEO</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Every site is designed for phones first and built with SEO basics in place so people can find you on Google.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Responsive</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">SEO</span>
+          </div>
+        </div>
+
+        <!-- Skill 06 -->
+        <div class="spotlight-card p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-all flex flex-col justify-between">
+          <div>
+            <div class="mb-3 sm:mb-4">
+              <span class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">• Engineering</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-semibold text-white mb-2">Custom Tools & Integrations</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Contact forms, third-party integrations, Chrome extensions and automations that save you time.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-neutral-800/70 mt-4 sm:mt-5">
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">APIs</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-800/60 text-neutral-400">Automation</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="scroll-mt-24">
+      <div class="rounded-xl sm:rounded-2xl bg-neutral-900/60 border border-neutral-800 p-5 xs:p-6 sm:p-8 lg:p-10 relative">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
+          
+          <!-- Contact Info -->
+          <div class="lg:col-span-2 flex flex-col justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold mb-1">Let's Talk</p>
+              <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                Need a website that works as hard as you do?
+              </h2>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                Whether you need a new website, a WordPress site, a Shopify store or fixes to your current site, tell me what you have in mind. I reply within 24 hours.
+              </p>
+
+              <div class="space-y-3 text-xs mb-6">
+                <div class="flex items-center gap-2 text-neutral-300">
+                  <i data-lucide="mail" class="w-3.5 h-3.5 text-neutral-500 shrink-0"></i>
+                  <button onclick="copyEmail()" class="hover:text-white underline underline-offset-2 transition-colors cursor-pointer text-left break-all">
+                    contact@noorbutt.site
+                  </button>
+                </div>
+                <div class="flex items-center gap-2 text-neutral-300">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-neutral-500 shrink-0"></i>
+                  <span>Karachi, Pakistan</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="pt-5 border-t border-neutral-800/80">
+              <span class="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold block mb-2">Socials</span>
+              <div class="flex items-center gap-4 text-xs">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition-colors">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="lg:col-span-3">
+            <form id="contact-form" class="space-y-3.5">
+              <div>
+                <label for="form-name" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Name</label>
+                <input type="text" id="form-name" required placeholder="Jane Doe" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/80 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+              </div>
+
+              <div>
+                <label for="form-email" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Email</label>
+                <input type="email" id="form-email" required placeholder="jane@company.com" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/80 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+              </div>
+
+              <div>
+                <label for="form-subject" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Subject</label>
+                <input type="text" id="form-subject" required placeholder="New website / WordPress / Shopify / Redesign" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/80 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+              </div>
+
+              <div>
+                <label for="form-message" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Message</label>
+                <textarea id="form-message" rows="4" required placeholder="Tell me about your business, what you need, and your timeline..." class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/80 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-2.5 sm:py-2 px-4 bg-neutral-100 hover:bg-white text-neutral-950 font-medium rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]">
+                <span>Send Message</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </form>
+
+            <!-- Success State -->
+            <div id="contact-success" class="hidden text-center py-6 sm:py-8">
+              <div class="w-10 h-10 rounded-full bg-sky-950 border border-sky-800/60 text-sky-400 mx-auto flex items-center justify-center mb-3">
+                <i data-lucide="check" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-base font-semibold text-white mb-1">Thanks, message received.</h4>
+              <p class="text-xs text-neutral-400 max-w-xs mx-auto mb-4">
+                I'll review your project and reply within 24 hours.
+              </p>
+              <button onclick="resetContactForm()" class="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-medium rounded-lg transition-colors cursor-pointer active:scale-95">
+                Send another message
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (Matching noorbutt.site layout and border) -->
+  <footer class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 border-t border-neutral-900 text-center sm:text-left">
+    <p>© <span id="year">2026</span> Noor Butt. All rights reserved. · Web Developer, Karachi, Pakistan</p>
+    
+    <div class="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2">
+      <a href="https://noorbutt.site" class="hover:text-neutral-300 transition-colors">Main Hub</a>
+      <a href="https://edit.noorbutt.site" class="hover:text-neutral-300 transition-colors">Video Portal</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Wrapper (Centered on mobile, right-anchored on desktop) -->
+  <div id="toast-wrapper" class="fixed bottom-5 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 z-50 pointer-events-none flex justify-center sm:justify-end">
+    <div id="toast" style="opacity: 0; transform: translateY(16px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;" class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-neutral-200 shadow-2xl shadow-black/80 max-w-full">
+      <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+      <span id="toast-message">Copied to clipboard</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Auto-update year
+    const yearElem = document.getElementById('year');
+    if (yearElem) {
+      yearElem.textContent = new Date().getFullYear();
+    }
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Spotlight cursor tracking (matching noorbutt.site)
+    document.querySelectorAll('.spotlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Copy Email helper with universal clipboard fallback
+    function copyEmail() {
+      const email = 'contact@noorbutt.site';
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast('Copied ' + email + ' to clipboard!');
+        }).catch(() => {
+          fallbackCopyText(email);
+        });
+      } else {
+        fallbackCopyText(email);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.top = '-9999px';
+        textArea.style.left = '-9999px';
+        textArea.setAttribute('readonly', '');
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast('Copied ' + text + ' to clipboard!');
+      } catch (err) {
+        showToast('contact@noorbutt.site');
+      }
+    }
+
+    // Toast display helper
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+      toast.style.pointerEvents = 'auto';
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(16px)';
+        toast.style.pointerEvents = 'none';
+      }, 3000);
+    }
+
+    // Web3Forms Form Submission
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const submitSpan = submitBtn.querySelector('span');
+      const originalText = submitSpan.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      submitSpan.textContent = 'Sending...';
+
+      const name = document.getElementById('form-name').value.trim();
+      const email = document.getElementById('form-email').value.trim();
+      const subject = document.getElementById('form-subject').value.trim();
+      const message = document.getElementById('form-message').value.trim();
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: '589b344f-48f5-4403-936e-439ad4e96cc3',
+            name: name,
+            email: email,
+            subject: `[Portfolio Inquiry] ${subject} — ${name}`,
+            message: message,
+            from_name: 'dev.noorbutt.site Gateway'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById('contact-form').classList.add('hidden');
+          document.getElementById('contact-success').classList.remove('hidden');
+          lucide.createIcons();
+        } else {
+          showToast(data.message || 'Submission failed. Please try again.');
+        }
+      } catch (err) {
+        showToast('Submission error. Opening mail fallback...');
+        window.location.href = `mailto:contact@noorbutt.site?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        submitSpan.textContent = originalText;
+      }
+    });
+
+    function resetContactForm() {
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-form').classList.remove('hidden');
+      document.getElementById('contact-success').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

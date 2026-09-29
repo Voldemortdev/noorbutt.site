@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Client portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Tailwind CSS CDN & Custom Breakpoints -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '400px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Subtle cursor spotlight effect on cards matching noorbutt.site */
+    .spotlight-card {
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .spotlight-card::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: radial-gradient(
+          450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+          rgba(255, 255, 255, 0.16),
+          transparent 65%
+        );
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen min-h-[100dvh] flex flex-col justify-between selection:bg-neutral-800 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Glow Background -->
+  <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center overflow-hidden">
+    <div class="w-[300px] xs:w-[420px] sm:w-[680px] h-[300px] xs:h-[420px] sm:h-[520px] bg-gradient-to-tr from-sky-950/30 via-indigo-950/20 to-purple-950/25 blur-[80px] sm:blur-[140px] rounded-full"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-8 flex items-center justify-between">
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="https://noorbutt.site" class="text-xs font-semibold tracking-wider uppercase text-neutral-500 hover:text-white transition-colors flex items-center gap-1 sm:gap-1.5" title="Back to Central Portal">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span>Hub</span>
+      </a>
+      <span class="text-neutral-700">/</span>
+      <a href="/" class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-neutral-400 hover:text-white transition-colors">
+        demo<span class="text-neutral-600">.noorbutt.site</span>
+      </a>
+    </div>
+
+    <div>
+      <a href="/" class="text-xs px-3 py-1.5 rounded-lg bg-neutral-900/80 border border-neutral-800 hover:border-neutral-700 hover:text-white text-neutral-300 font-medium transition-all flex items-center gap-1.5 active:scale-95">
+        <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+        <span>Sign in</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content: Centered 404 Card -->
+  <main class="w-full max-w-md mx-auto px-4 py-8 sm:py-16 my-auto flex flex-col items-center justify-center text-center">
+
+    <div class="spotlight-card w-full rounded-2xl bg-neutral-900/60 border border-neutral-800 p-6 sm:p-8 shadow-2xl shadow-black/60 relative overflow-hidden backdrop-blur-sm">
+      
+      <!-- Icon -->
+      <div class="flex justify-center mb-5">
+        <div class="w-12 h-12 rounded-xl bg-neutral-950/80 border border-neutral-800 text-sky-400 flex items-center justify-center shadow-inner">
+          <i data-lucide="file-question" class="w-6 h-6"></i>
+        </div>
+      </div>
+
+      <!-- Error Code & Message -->
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-950/80 border border-neutral-800 text-[11px] font-mono font-medium text-neutral-400 mb-3">
+        <span>Error 404</span>
+      </div>
+
+      <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2">This page isn't available.</h1>
+      
+      <p class="text-xs sm:text-sm text-neutral-400 max-w-xs mx-auto mb-6">
+        The link you followed may be incorrect, or the page may have been relocated.
+      </p>
+
+      <!-- Action Button: Link back to sign in -->
+      <a 
+        href="/" 
+        class="w-full py-2.5 px-4 bg-white hover:bg-neutral-200 text-neutral-950 font-semibold rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 active:scale-[0.98] shadow-md">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span>Return to sign in</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 border-t border-neutral-900 text-center sm:text-left">
+    <p>© <span id="year">2026</span> Noor Butt. All rights reserved.</p>
+    
+    <div class="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2">
+      <a href="mailto:contact@noorbutt.site" class="hover:text-neutral-300 transition-colors flex items-center gap-1">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>contact@noorbutt.site</span>
+      </a>
+      <a href="https://noorbutt.site" class="hover:text-neutral-300 transition-colors">Hub</a>
+      <a href="https://dev.noorbutt.site" class="hover:text-neutral-300 transition-colors">Web Dev</a>
+      <a href="https://edit.noorbutt.site" class="hover:text-neutral-300 transition-colors">Video Portal</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Auto-update copyright year
+    const yearElem = document.getElementById('year');
+    if (yearElem) {
+      yearElem.textContent = new Date().getFullYear();
+    }
+
+    // Spotlight cursor tracking
+    document.querySelectorAll('.spotlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Noor Butt — Video Editor | Coming Soon</title>
+  <meta name="description" content="Noor Butt — Video Editing & Post-Production. Coming soon." />
+  <meta name="author" content="Noor Butt" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://edit.noorbutt.site" />
+  <meta property="og:title" content="Noor Butt — Video Editor | Coming Soon" />
+  <meta property="og:description" content="Noor Butt — Video Editing & Post-Production. Coming soon." />
+  <meta property="og:image" content="https://edit.noorbutt.site/favicon.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Noor Butt — Video Editor | Coming Soon" />
+  <meta name="twitter:description" content="Noor Butt — Video Editing & Post-Production. Coming soon." />
+  <meta name="twitter:image" content="https://edit.noorbutt.site/favicon.svg" />
+
+  <!-- Tailwind CSS CDN & Custom Breakpoints -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '400px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter & Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Subtle cursor spotlight effect on cards matching noorbutt.site */
+    .spotlight-card {
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .spotlight-card::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: radial-gradient(
+          450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+          rgba(255, 255, 255, 0.16),
+          transparent 65%
+        );
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+    }
+
+    /* Custom scrollbar for modal */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(23, 23, 23, 0.5);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(64, 64, 64, 0.6);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen min-h-[100dvh] flex flex-col justify-between selection:bg-neutral-800 selection:text-white relative overflow-x-hidden">
+
+  <!-- Ambient Glow Background (Clipped on mobile to avoid overflow) -->
+  <div class="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center overflow-hidden">
+    <div class="w-[300px] xs:w-[420px] sm:w-[680px] h-[300px] xs:h-[420px] sm:h-[520px] bg-gradient-to-tr from-sky-950/30 via-indigo-950/20 to-purple-950/25 blur-[80px] sm:blur-[140px] rounded-full"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-8 flex items-center justify-between">
+    
+    <!-- Brand / Backlink to Hub -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="https://noorbutt.site" class="text-xs font-semibold tracking-wider uppercase text-neutral-500 hover:text-white transition-colors flex items-center gap-1 sm:gap-1.5" title="Back to Central Portal">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span>Hub</span>
+      </a>
+      <span class="text-neutral-700">/</span>
+      <a href="#" class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-neutral-400 hover:text-white transition-colors">
+        edit<span class="text-neutral-600">.noorbutt.site</span>
+      </a>
+    </div>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <button 
+        onclick="openContactModal()" 
+        class="text-xs px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-lg bg-neutral-900/80 border border-neutral-800 hover:border-neutral-700 hover:text-white text-neutral-300 font-medium transition-all flex items-center gap-1.5 focus:outline-none focus:ring-1 focus:ring-neutral-700 cursor-pointer whitespace-nowrap active:scale-95">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>Get in Touch</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content (Centered Hero with Coming Soon and Countdown) -->
+  <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-16 my-auto text-center flex flex-col items-center justify-center">
+
+    <!-- Headline -->
+    <h1 class="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-3 sm:mb-4">
+      Coming Soon
+    </h1>
+
+    <p class="text-neutral-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-8 sm:mb-12 px-1 sm:px-0">
+      Crafting stories in motion. The dedicated portfolio for commercial edits, high-retention reels, and color grading is on the way.
+    </p>
+
+    <!-- Countdown Timer Grid -->
+    <div class="grid grid-cols-4 gap-2 xs:gap-3 sm:gap-6 max-w-xl mx-auto mb-8 sm:mb-12 w-full">
+      
+      <!-- Days -->
+      <div class="spotlight-card flex flex-col items-center justify-center py-4 px-1 xs:py-5 xs:px-2.5 sm:py-7 sm:px-4 rounded-xl sm:rounded-2xl bg-neutral-900/70 border border-neutral-800 shadow-xl shadow-black/40">
+        <span id="days" class="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight font-mono leading-none">00</span>
+        <span class="text-[9px] xs:text-[10px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-neutral-500 mt-1.5 sm:mt-2">Days</span>
+      </div>
+
+      <!-- Hours -->
+      <div class="spotlight-card flex flex-col items-center justify-center py-4 px-1 xs:py-5 xs:px-2.5 sm:py-7 sm:px-4 rounded-xl sm:rounded-2xl bg-neutral-900/70 border border-neutral-800 shadow-xl shadow-black/40">
+        <span id="hours" class="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight font-mono leading-none">00</span>
+        <span class="text-[9px] xs:text-[10px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-neutral-500 mt-1.5 sm:mt-2">Hours</span>
+      </div>
+
+      <!-- Minutes -->
+      <div class="spotlight-card flex flex-col items-center justify-center py-4 px-1 xs:py-5 xs:px-2.5 sm:py-7 sm:px-4 rounded-xl sm:rounded-2xl bg-neutral-900/70 border border-neutral-800 shadow-xl shadow-black/40">
+        <span id="minutes" class="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight font-mono leading-none">00</span>
+        <span class="text-[9px] xs:text-[10px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-neutral-500 mt-1.5 sm:mt-2">Minutes</span>
+      </div>
+
+      <!-- Seconds -->
+      <div class="spotlight-card flex flex-col items-center justify-center py-4 px-1 xs:py-5 xs:px-2.5 sm:py-7 sm:px-4 rounded-xl sm:rounded-2xl bg-neutral-900/70 border border-neutral-800 shadow-xl shadow-black/40">
+        <span id="seconds" class="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-bold text-sky-400 tracking-tight font-mono leading-none">00</span>
+        <span class="text-[9px] xs:text-[10px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-sky-400/80 mt-1.5 sm:mt-2">Seconds</span>
+      </div>
+
+    </div>
+
+    <!-- Quick Action / Inquiries Strip (Stacks on mobile, horizontal on sm+) -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full max-w-xs sm:max-w-none mx-auto">
+      <button 
+        onclick="openContactModal()" 
+        class="w-full sm:w-auto px-4 py-2.5 bg-neutral-100 hover:bg-white text-neutral-950 font-semibold rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-lg shadow-white/5 active:scale-[0.98]">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>Book an Edit in Advance</span>
+      </button>
+
+      <button 
+        onclick="copyEmail()" 
+        class="w-full sm:w-auto px-3.5 py-2.5 bg-neutral-900/80 border border-neutral-800 hover:border-neutral-700 text-neutral-300 hover:text-white text-xs font-medium rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]" 
+        title="Click to copy email address">
+        <i data-lucide="copy" class="w-3.5 h-3.5 text-neutral-400"></i>
+        <span>contact@noorbutt.site</span>
+      </button>
+
+      <a 
+        href="https://noorbutt.site" 
+        class="w-full sm:w-auto px-3.5 py-2.5 bg-neutral-900/40 border border-neutral-800/80 hover:border-neutral-700 text-neutral-400 hover:text-neutral-200 text-xs rounded-lg transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]">
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+        <span>Return to Hub</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 border-t border-neutral-900 text-center sm:text-left">
+    <p>© <span id="year"></span> Noor Butt. All rights reserved.</p>
+    
+    <div class="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2">
+      <button onclick="openContactModal()" class="hover:text-neutral-300 transition-colors flex items-center gap-1 cursor-pointer">
+        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+        <span>contact@noorbutt.site</span>
+      </button>
+      <a href="https://noorbutt.site" class="hover:text-neutral-300 transition-colors">Central Hub</a>
+      <a href="https://dev.noorbutt.site" class="hover:text-neutral-300 transition-colors">Web Dev</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Contact Modal Dialog (Mobile responsive with custom scrollbar) -->
+  <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-neutral-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-200">
+    <div id="contact-card" class="relative w-full max-w-lg bg-neutral-900 border border-neutral-800 rounded-2xl p-5 sm:p-7 shadow-2xl shadow-black/80 transform scale-95 transition-all duration-200 text-left my-auto max-h-[92dvh] overflow-y-auto custom-scrollbar">
+      
+      <!-- Close Button -->
+      <button onclick="closeContactModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors cursor-pointer" aria-label="Close dialog">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-5 pr-8">
+        <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">Let's collaborate</h3>
+        <p class="text-xs text-neutral-400 mt-1">Have an upcoming edit, campaign, or long-term content need? Connect directly.</p>
+      </div>
+
+      <!-- Quick Action Buttons (Copy Email / Open Mail App) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
+        <button onclick="copyEmail()" class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-200 hover:text-white transition-all group cursor-pointer active:scale-[0.98]">
+          <i data-lucide="copy" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-sky-400 transition-colors"></i>
+          <span>Copy Email Address</span>
+        </button>
+        <a href="mailto:contact@noorbutt.site?subject=Video%20Editing%20Inquiry%20%E2%80%94%20Noor%20Butt" class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-neutral-950/80 border border-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-200 hover:text-white transition-all group active:scale-[0.98]">
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400 group-hover:text-sky-400 transition-colors"></i>
+          <span>Open in Mail App</span>
+        </a>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-5">
+        <div class="border-t border-neutral-800 w-full"></div>
+        <span class="bg-neutral-900 px-3 text-[10px] uppercase tracking-wider text-neutral-500 font-semibold absolute">Or send a direct inquiry</span>
+      </div>
+
+      <!-- Direct Message Form -->
+      <form id="contact-form" class="space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="contact-name" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Your Name</label>
+            <input type="text" id="contact-name" required placeholder="Jane Doe" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+          </div>
+          <div>
+            <label for="contact-email" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Your Email</label>
+            <input type="email" id="contact-email" required placeholder="jane@company.com" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors" />
+          </div>
+        </div>
+
+        <div>
+          <label for="contact-service" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Project Type</label>
+          <select id="contact-service" class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white focus:outline-none focus:border-neutral-600 transition-colors">
+            <option value="Video Editing & Post-Production" selected>Video Editing & Post-Production</option>
+            <option value="Short-Form / Social Reels">Short-Form / Social Reels</option>
+            <option value="Commercial & Brand Ad">Commercial & Brand Ad</option>
+            <option value="Color Grading / Sound Mixing">Color Grading / Sound Mixing</option>
+            <option value="Web & Video Full-Stack">Web & Video Full-Stack</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="contact-message" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-400 mb-1">Project Scope & Details</label>
+          <textarea id="contact-message" rows="3" required placeholder="Tell me about your footage, deliverables, timeline, or references..." class="w-full px-3 py-2.5 sm:py-2 bg-neutral-950/90 border border-neutral-800 rounded-lg text-sm sm:text-xs text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-600 transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 px-4 bg-white hover:bg-neutral-200 text-neutral-950 font-semibold rounded-lg text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Send Video Inquiry</span>
+        </button>
+      </form>
+
+      <!-- Form Success Notification State (Hidden by default) -->
+      <div id="contact-success" class="hidden text-center py-6">
+        <div class="w-10 h-10 rounded-full bg-sky-950 border border-sky-800/60 text-sky-400 mx-auto flex items-center justify-center mb-3">
+          <i data-lucide="check" class="w-5 h-5"></i>
+        </div>
+        <h4 class="text-base font-semibold text-white mb-1">Inquiry Sent!</h4>
+        <p class="text-xs text-neutral-400 max-w-xs mx-auto mb-4" id="success-desc">
+          Thank you! Your project details have been sent directly to Noor. Expect a reply within 24 hours.
+        </p>
+        <button onclick="resetContactForm()" class="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-medium rounded-lg transition-colors cursor-pointer active:scale-95">
+          Send another inquiry
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification (Centered on mobile, right-anchored on desktop) -->
+  <div id="toast" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-50 transform translate-y-8 opacity-0 pointer-events-none transition-all duration-300 ease-out flex items-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs text-neutral-200 shadow-xl shadow-black/50 max-w-[calc(100vw-2rem)] whitespace-normal sm:whitespace-nowrap">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-sky-400 shrink-0"></i>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Spotlight cursor movement tracker
+    document.querySelectorAll('.spotlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Countdown Timer Logic
+    // Target date: October 15, 2026 00:00:00
+    let targetDate = new Date('2026-10-15T00:00:00').getTime();
+    if (targetDate <= Date.now()) {
+      targetDate = Date.now() + (14 * 24 * 60 * 60 * 1000);
+    }
+
+    function updateCountdown() {
+      const now = Date.now();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Contact Modal Dialog Controls
+    const modal = document.getElementById('contact-modal');
+    const card = document.getElementById('contact-card');
+
+    function openContactModal() {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeContactModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      card.classList.add('scale-95');
+      card.classList.remove('scale-100');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Close when clicking outside modal card
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeContactModal();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
+        closeContactModal();
+      }
+    });
+
+    // Copy Email to Clipboard with Toast
+    function copyEmail() {
+      const email = 'contact@noorbutt.site';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('Copied ' + email + ' to clipboard!');
+      }).catch(() => {
+        window.location.href = 'mailto:' + email;
+      });
+    }
+
+    // Toast display helper
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      
+      toast.classList.remove('translate-y-8', 'translate-y-16', 'translate-y-12', 'sm:translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+
+    // Handle Contact Form Submission with Web3Forms
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const submitText = submitBtn.querySelector('span');
+      const originalText = submitText.textContent;
+      
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      submitText.textContent = 'Sending...';
+
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const service = document.getElementById('contact-service').value;
+      const message = document.getElementById('contact-message').value.trim();
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: '589b344f-48f5-4403-936e-439ad4e96cc3',
+            name: name,
+            email: email,
+            subject: `[Video Project Inquiry] ${service} — ${name}`,
+            service: service,
+            message: message,
+            from_name: 'edit.noorbutt.site Gateway'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById('contact-form').classList.add('hidden');
+          document.getElementById('contact-success').classList.remove('hidden');
+          lucide.createIcons();
+        } else {
+          showToast(data.message || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        showToast('Unable to send. Please reach out to contact@noorbutt.site');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        submitText.textContent = originalText;
+      }
+    });
+
+    function resetContactForm() {
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-form').classList.remove('hidden');
+      document.getElementById('contact-success').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
